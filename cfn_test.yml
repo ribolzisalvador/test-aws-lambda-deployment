@@ -7,7 +7,7 @@ Resources:
   SenderFunction:
     Type: "AWS::Lambda::Function"
     Properties:
-      Code: text_export.py
+      Code: test_export.py
       # FunctionName: String  # Parametrize this
       Handler: text_export.handler
       Role: !GetAtt SenderFunctionIAMRole.Arn
