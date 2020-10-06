@@ -9,7 +9,7 @@ Resources:
     Properties:
       Code: test_export.py
       # FunctionName: String  # Parametrize this
-      Handler: text_export.handler
+      Handler: test_export.handler
       Role: !GetAtt SenderFunctionIAMRole.Arn
       Runtime: python3.8
       Timeout: 30
@@ -58,12 +58,12 @@ Resources:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Sub "uss-exports-${AWS::StackName}"
-      # NotificationConfiguration:
-      #   LambdaConfigurations:
-      #     Event: s3:ObjectCreated:*
-      #     Filter:
-      #       S3Key:
-      #         Rules:
-      #           - Name: prefix
-      #             Value: input
-      #     Function: !GetAtt SenderFunction.Arn
+      NotificationConfiguration:
+        LambdaConfigurations:
+          Event: s3:ObjectCreated:*
+          Filter:
+            S3Key:
+              Rules:
+                - Name: prefix
+                  Value: input
+          Function: !GetAtt SenderFunction.Arn
