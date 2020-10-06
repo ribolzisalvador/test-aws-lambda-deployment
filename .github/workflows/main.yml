@@ -18,7 +18,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
         
       - name: Test ls
-        run: ls -lah 
+        run: pwd
         
       - name: Package Cloudformation artifacts (Lambda code)
         run: aws cloudformation package --template-file cfn_test.yml --s3-bucket ${{ secrets.AWS_CODE_BUCKET }} --output-template-file cfn_test_packaged.yml
