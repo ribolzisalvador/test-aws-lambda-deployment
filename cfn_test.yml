@@ -60,10 +60,10 @@ Resources:
       BucketName: !Sub "uss-exports-${AWS::StackName}"
       NotificationConfiguration:
         LambdaConfigurations:
-          Event: s3:ObjectCreated:*
-          Filter:
-            S3Key:
-              Rules:
-                - Name: prefix
-                  Value: input
-          Function: !GetAtt SenderFunction.Arn
+          - Event: s3:ObjectCreated:*
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: input
+            Function: !GetAtt SenderFunction.Arn
