@@ -21,7 +21,7 @@ Resources:
       FunctionName: !GetAtt SenderFunction.Arn
       Principal: s3.amazonaws.com
       SourceAccount: !Ref AWS::AccountId
-      SourceArn: !Sub "arn:aws:s3:::${StorageBucket}"
+      SourceArn: !Sub "arn:aws:s3:::uss-exports-${AWS::StackName}"
 
   SenderFunctionIAMRole:
     Type: "AWS::IAM::Role"
@@ -46,7 +46,7 @@ Resources:
                   - "s3:PutBucketNotification"
                   - "s3:GetObject"
                   - "s3:PutObject"
-                Resource: !Sub "arn:aws:s3:::${StorageBucket}"
+                Resource: !Sub "arn:aws:s3:::uss-exports-${AWS::StackName}"
               - Effect: Allow
                 Action:
                   - "logs:CreateLogGroup"
